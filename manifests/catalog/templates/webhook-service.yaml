@@ -1,0 +1,21 @@
+##---
+# Source: catalog/templates/webhook-service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-catalog-catalog-webhook
+  labels:
+    app: service-catalog-catalog-webhook
+    chart: "catalog-0.3.0-beta.2"
+    release: "service-catalog"
+    heritage: "Tiller"
+spec:
+  type: NodePort
+  selector:
+    app: service-catalog-catalog-webhook
+  ports:
+  - name: secure
+    protocol: TCP
+    port: 443
+    targetPort: 8443
+    nodePort: 31443
